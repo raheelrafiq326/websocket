@@ -22,7 +22,6 @@ class WebSocketController implements MessageComponentInterface
 
     public function onMessage(ConnectionInterface $from, $msg)
     {
-        \Log::info("Client", $client);
         foreach ($this->clients as $client) {
             if ($client !== $from) {
                 $client->send($msg);
