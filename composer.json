@@ -1,0 +1,29 @@
+{
+    "name": "raheelrafiq326/websocket",
+    "description": "Websocket support for laravel applications.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Raheel Khan",
+            "email": "raheelqazi326@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "cboden/ratchet": "^0.4.4",
+        "textalk/websocket": "^1.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "RaheelRafiq326\\Websocket\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "RaheelRafiq326\\Websocket\\WebsocketServiceProvider"
+            ]
+        }
+    }
+}
