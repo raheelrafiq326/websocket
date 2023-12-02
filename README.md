@@ -22,7 +22,11 @@ Publish config and js files in project.
 php artisan vendor:publish --tag=websocket
 ```
 
-After installation add below command in schedule function in app\Console\Kernel.php.
+```terminal
+php artisan websocket:serve
+```
+
+After installation add below command in schedule function in app\Console\Kernel.php (if want to add websocket server from cronjob).
 
 ```php
 protected function schedule(Schedule $schedule): void
@@ -34,7 +38,7 @@ protected function schedule(Schedule $schedule): void
 
 After this run scheduler (in development or local).
 ```terminal
-php artisan scheduler run
+php artisan schedule:run
 ```
 
 Add above command in cron job in server (production).
@@ -62,8 +66,12 @@ WebSocketClient::sendMessage($channel, $event, $data);
 ```
 
 ### Testing
-You can test connection using socket.js, run below command if you didn't publish js files.
+Run below command if you didn't publish js files.
+```terminal
+php artisan vendor:publish --tag=websocket-js
+```
 
+You can test websocket connection using socket.js. Which was exported to public/vendor/websocket directory.
 ```html
 <script src="{{ asset('vendor/websocket/socket.js') }}"></script>
 <script>
