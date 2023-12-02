@@ -29,7 +29,10 @@ class WebSocketServerCommand extends Command
      */
     public function handle()
     {
-        $port = env("WEB_SOCKET_PORT") ?? 8080;
+        if (is_null(config('websocket'))) {
+            return $this->warn("Please publish the config file by running 'php artisan vendor:publish --tag=websocket-config'");
+        }
+        $port = config('websocket.port');
         $server = IoServer::factory(
             new HttpServer(
                 new WsServer(
